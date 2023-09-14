@@ -1,54 +1,51 @@
 import java.util.Random;
 import java.util.Scanner;
 
-public class EnhancedNumberGame {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        Random random = new Random();
-        
-        int lowerBound = 1;
-        int upperBound = 100;
-        int maxAttempts = 10;
-        int score = 0;
-        
-        boolean playAgain = true;
-        
-        System.out.println("Welcome to the Enhanced Number Guessing Game!");
-        
-        while (playAgain) {
-            int numberToGuess = random.nextInt(upperBound - lowerBound + 1) + lowerBound;
-            int numberOfAttempts = 0;
-            boolean hasGuessedCorrectly = false;
-            
-            System.out.println("I've chosen a number between " + lowerBound + " and " + upperBound + ".");
-            
-            while (!hasGuessedCorrectly && numberOfAttempts < maxAttempts) {
-                System.out.print("Enter your guess: ");
-                int userGuess = scanner.nextInt();
-                numberOfAttempts++;
-                
-                if (userGuess == numberToGuess) {
-                    hasGuessedCorrectly = true;
-                    score += maxAttempts - numberOfAttempts + 1;
-                    System.out.println("Congratulations! You've guessed the number in " + numberOfAttempts + " attempts.");
-                } else if (userGuess < numberToGuess) {
-                    System.out.println("Try a higher number.");
-                } else {
-                    System.out.println("Try a lower number.");
-                }
-            }
-            
-            if (!hasGuessedCorrectly) {
-                System.out.println("Sorry, you've run out of attempts. The number was " + numberToGuess + ".");
-            }
-            
-            System.out.print("Do you want to play again? (yes/no): ");
-            String playAgainInput = scanner.next();
-            playAgain = playAgainInput.equalsIgnoreCase("yes");
-        }
-        
-        System.out.println("Game over! Your total score is: " + score);
-        scanner.close();
-    }
-}
+public class numbergame {
 
+  public static void main(String[] args) {
+    Random Random_number= new Random();
+    int right_guess=Random_number.nextInt(100);
+    int turns=0;
+    Scanner scan=new Scanner(System.in);
+    System.out.println("Guess a number between 1 to 100, You will have 10 turns!" );
+    System.out.println("best of luck!");
+    
+    int guess;
+    int i=0;
+    boolean win=false;
+    while(win==false) {
+      guess=scan.nextInt();
+      turns++;
+    
+    if(guess==right_guess) {
+      win=true;
+    }
+    else if(i>8){
+      System.out.println("You loose! the right answer was: "+right_guess);
+      return;
+    }
+    else if(guess<right_guess){
+      i++;
+      System.out.println("Yor Guess is lower than the right guess! Turns left: "+(10-i));
+      
+      
+      
+    }
+    else if(guess>right_guess) {
+      i++;
+      System.out.println("Your Guess Is Higher Than THe Right Guess! Turns left: "+(10-i));
+      
+    }
+    
+    
+
+  }
+    System.out.println("You win!");
+    System.out.println("Then number was "+right_guess);
+    System.out.println("You used "+turns+" turns to guess the right number");
+    System.out.println("Your score is "+((11-turns)*10)+" out of 100");
+    
+
+}
+}
